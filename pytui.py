@@ -37,10 +37,10 @@ class slider(element):
         step_size = self.max / self.width
         scaled_val = self.value / step_size
         
-        progress_bar = f"{color.invert()}["
+        progress_bar = "["
         progress_bar += "#" * math.floor(scaled_val)
         progress_bar += "-" * (self.width - math.floor(scaled_val))
-        progress_bar += f"] {color.reset()}"
+        progress_bar += "] "
         
         progress_percent = str(int(self.value / self.max * 100)) + "%"
         

@@ -1,3 +1,5 @@
+import math
+
 class element:
     def __init__(self,size=1,selectable=False) -> None:
         self.size = size
@@ -26,14 +28,12 @@ class slider(element):
         self.max = max
         
     def process(self, indent=0, space=255):
-        progress_bar = "["
+        step_size = self.max / self.width
+        scaled_val = self.value / step_size
         
-        for i in range(self.value):
-            progress_bar += '#'
-            
-        for i in range(self.max - self.value):
-            progress_bar += '-'
-            
+        progress_bar = "["
+        progress_bar += "#" * math.floor(scaled_val)
+        progress_bar += "-" * (self.width - math.floor(scaled_val))
         progress_bar += "] "
         
         progress_percent = str(int(self.value / self.max * 100)) + "%"

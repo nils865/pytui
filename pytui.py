@@ -26,8 +26,16 @@ class slider(element):
         self.max = max
         
     def process(self, indent=0, space=255):
+        progress_bar = "["
         
-        progress_bar = ""
+        for i in range(self.value):
+            progress_bar += '#'
+            
+        for i in range(self.max - self.value):
+            progress_bar += '-'
+            
+        progress_bar += "] "
+        
         progress_percent = str(int(self.value / self.max * 100)) + "%"
         
         self.render = (" " * indent + progress_bar + progress_percent + "\n")

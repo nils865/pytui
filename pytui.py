@@ -11,6 +11,12 @@ class element:
     def draw(self):
         return self.render
 
+class color:
+    def invert():
+        return "\033[7m"
+    
+    def reset():
+        return "\033[0m"
 
 class label(element):
     def __init__(self, size = 1, content = "example") -> None:
@@ -31,10 +37,10 @@ class slider(element):
         step_size = self.max / self.width
         scaled_val = self.value / step_size
         
-        progress_bar = "["
+        progress_bar = f"{color.invert()}["
         progress_bar += "#" * math.floor(scaled_val)
         progress_bar += "-" * (self.width - math.floor(scaled_val))
-        progress_bar += "] "
+        progress_bar += f"] {color.reset()}"
         
         progress_percent = str(int(self.value / self.max * 100)) + "%"
         

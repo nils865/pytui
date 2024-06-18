@@ -28,7 +28,7 @@ class statusdisplay(label):
         self.callback = callback
     
     def process(self, indent=0, space=255):
-        return super().process(indent, space) + self.callback
+        return super().process(indent, space) + self.callback()
 class init():
     def __init__(self) -> None:
         self.elements=[]

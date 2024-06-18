@@ -22,6 +22,13 @@ class slider(element):
     def __init__(self) -> None:
         super().__init__(1,True)
 
+class statusdisplay(label):
+    def __init__(self, size=1, content="example", callback=None) -> None:
+        super().__init__(size, content)
+        self.callback = callback
+    
+    def process(self, indent=0, space=255):
+        return super().process(indent, space) + self.callback
 class init():
     def __init__(self) -> None:
         self.elements=[]

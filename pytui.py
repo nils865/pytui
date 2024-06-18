@@ -19,8 +19,18 @@ class label(element):
         self.render = (" " * indent + self.content + "\n")
         
 class slider(element):
-    def __init__(self) -> None:
-        super().__init__(1,True)
+    def __init__(self, width=10, value=1, max=10) -> None:
+        super().__init__(1, True)
+        self.width = width
+        self.value = value
+        self.max = max
+        
+    def process(self, indent=0, space=255):
+        
+        progress_bar = ""
+        progress_percent = str(int(self.value / self.max * 100)) + "%"
+        
+        self.render = (" " * indent + progress_bar + progress_percent + "\n")
 
 class statusdisplay(label):
     def __init__(self, size=1, content="example", callback=None) -> None:
